@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Student = require('../Model/student');
 const mongoose = require('mongoose');
-// const authCheck = require('../middleware/auth-check');
+const checkAuth = require('../middleware/auth-check');
 
 
-router.get('/', (req, res, next) => {
+router.get('/', checkAuth, (req, res, next) => {
     Student.find()
         .then(result => {
             res.status(200).json({
