@@ -90,14 +90,36 @@ router.post('/login', (req, res, next) => {
 
 })
 
+// change password after matching email id 
+
+
+router.post('/change-password', async (req, res, next) => {
+    const data = await User.findOne({ email: req.body.email });
+    console.log(data)
+    if (data) {
+
+        return res.status(200).json({
+            msg: (data)
+        })
+    } else {
+        return res.status(200).json({
+            msg: 'Email not matched'
+        })
+    }
+
+})
+
+
+router.post('/forgot-password', (req, res, next) => {
+    res.status(200).json({
+        msg: 'hello'
+    });
+
+})
+
+
 
 module.exports = router;
-
-
-
-
-
-
 
 
 

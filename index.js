@@ -1,22 +1,26 @@
-
+require("dotenv").config();
 var express = require('express');
 var app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
-const studentRoute = require('./model/api/routes/student')
-const facultyRoute = require('./model/api/routes/faculty')
-const userRoute = require('./model/api/routes/user')
+const studentRoute = require('./model/api/routes/student');
+const facultyRoute = require('./model/api/routes/faculty');
+const userRoute = require('./model/api/routes/user');
+const countryRoute = require('./model/api/routes/country');
+const stateRoute = require('./model/api/routes/state');
 
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/faculty', facultyRoute)
-app.use('/student', studentRoute)
-app.use('/user', userRoute)
 
+
+app.use('/faculty', facultyRoute);
+app.use('/student', studentRoute);
+app.use('/user', userRoute);
+app.use('/country', countryRoute);
+app.use('/state', stateRoute);
 
 
 app.get('/', function (req, res) {
